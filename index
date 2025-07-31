@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário WebToLead</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+      color: #555;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+      display: none;
+    }
+
+    button {
+      grid-column: span 2;
+      background: #007bff;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h2>Cadastro de Parceiros</h2>
+  
+  <form id="leadForm" 
+        action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D6A000002ImjZ" 
+        method="POST">
+
+    <input type="hidden" name="oid" value="00D6A000002ImjZ">
+    <input type="hidden" name="retURL" value="https://salesforcehenrique.github.io/">
+
+    <!-- Campos básicos -->
+    <div>
+      <label for="cnpj">CNPJ</label>
+      <input id="cnpj" name="00NSG00000QKAKR" maxlength="18" type="text" required>
+      <div class="error">Digite um CNPJ válido.</div>
+    </div>
+
+    <div>
+      <label for="razao">Razão Social</label>
+      <input id="razao" name="00NSG00000QKCIz" type="text" required>
+    </div>
+
+    <div>
+      <label for="fantasia">Nome Fantasia</label>
+      <input id="fantasia" name="00NIa000000NlQQ" type="text" required>
+    </div>
+
+    <div>
+      <label for="cep">CEP</label>
+      <input id="cep" name="00N6A00000NUFGs" maxlength="9" type="text" required>
+      <div class="error">Digite um CEP válido.</div>
+    </div>
+
+    <div class="full-width">
+      <label for="street">Logradouro</label>
+      <textarea id="street" name="street" rows="2" required></textarea>
+    </div>
+
+    <div>
+      <label for="first_name">Primeiro Nome</label>
+      <input id="first_name" name="first_name" type="text" required>
+    </div>
+
+    <div>
+      <label for="last_name">Sobrenome</label>
+      <input id="last_name" name="last_name" type="text" required>
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required>
+      <div class="error">Digite um e-mail válido.</div>
+    </div>
+
+    <div>
+      <label for="company">Empresa</label>
+      <input id="company" name="company" type="text" required>
+    </div>
+
+    <div>
+      <label for="state">Estado</label>
+      <input id="state" name="state" type="text" required>
+    </div>
+
+    <div>
+      <label for="city">Cidade</label>
+      <input id="city" name="city" type="text" required>
+    </div>
+
+    <!-- Campos adicionais -->
+    <div class="full-width">
+      <label for="responsavel">Responsável</label>
+      <input id="responsavel" name="00NSG00000QKgtm" type="text" required>
+    </div>
+
+    <div>
+      <label for="cargo">Cargo</label>
+      <select id="cargo" name="00NSG00000QKGWI">
+        <option value="">-- Selecione --</option>
+        <option value="Proprietário">Proprietário</option>
+        <option value="Diretor">Diretor</option>
+        <option value="Gerente">Gerente</option>
+        <option value="Funcionário">Funcionário</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="imobiliarias">Qtd. Imobiliárias</label>
+      <input id="imobiliarias" name="00N6A00000NUmQa" type="number" min="1" required>
+    </div>
+
+    <div>
+      <label for="incendio">Prod. Mensal Incêndio</label>
+      <input id="incendio" name="00NSG00000QGVKd" type="number" step="0.01">
+    </div>
+
+    <div>
+      <label for="fianca">Prod. Mensal Fiança</label>
+      <input id="fianca" name="00NSG00000QGgQv" type="number" step="0.01">
+    </div>
+
+    <div>
+      <label for="capitalizacao">Prod. Mensal Capitalização</label>
+      <input id="capitalizacao" name="00NSG00000QGe4A" type="number" step="0.01">
+    </div>
+
+    <div class="full-width">
+      <label for="site">Endereço do site</label>
+      <input id="site" name="00NSG00000QGjlN" type="url">
+    </div>
+
+    <div>
+      <label for="plataforma">Tem plataforma própria?</label>
+      <select id="plataforma" name="00NSG00000QGcb4">
+        <option value="">-- Selecione --</option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="erp">Parceria com ERP?</label>
+      <select id="erp" name="00NSG00000QGYvd">
+        <option value="">-- Selecione --</option>
+        <option value="Sim">Sim</option>
+        <option value="Não">Não</option>
+      </select>
+    </div>
+
+    <div class="full-width">
+      <label for="erp_nome">ERP Utilizado</label>
+      <input id="erp_nome" name="00NSG00000QGgKU" type="text">
+    </div>
+
+    <button type="submit">Enviar Cadastro</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('leadForm');
+
+    // Máscara simples para CNPJ
+    document.getElementById('cnpj').addEventListener('input', function(e) {
+      let v = e.target.value.replace(/\D/g, "");
+      v = v.replace(/^(\d{2})(\d)/, "$1.$2");
+      v = v.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3");
+      v = v.replace(/\.(\d{3})(\d)/, ".$1/$2");
+      v = v.replace(/(\d{4})(\d)/, "$1-$2");
+      e.target.value = v;
+    });
+
+    // Máscara simples para CEP
+    document.getElementById('cep').addEventListener('input', function(e) {
+      let v = e.target.value.replace(/\D/g, "");
+      v = v.replace(/^(\d{5})(\d)/, "$1-$2");
+      e.target.value = v;
+    });
+
+    // Validação de e-mail
+    form.addEventListener('submit', function(e) {
+      let valid = true;
+      const email = document.getElementById('email');
+      const emailError = email.nextElementSibling;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        emailError.style.display = 'block';
+        valid = false;
+      } else {
+        emailError.style.display = 'none';
+      }
+
+      if (!valid) e.preventDefault();
+    });
+  </script>
+</body>
+</html>

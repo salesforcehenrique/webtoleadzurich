@@ -274,6 +274,12 @@
         </div>
       </div>
 
+      <div class="section" id="responsavelComercialSection" style="display:none;">
+        <div class="form-group full">
+          <input id="responsavel_comercial" name="responsavel_comercial" type="text" placeholder="Responsável Comercial: Zurich">
+        </div>
+      </div>
+
       <div class="section">
         <div class="form-group full">
           <label>Deseja agendar uma reunião?</label>
@@ -288,10 +294,6 @@
             <iframe src="https://calendar.app.google/B54Z6pKjMCbgjTUv9" allowfullscreen></iframe>
           </div>
         </div>
-      </div>
-
-      <div class="form-group full" id="responsavelComercialGroup" style="display:none;">
-        <input id="responsavel_comercial" name="responsavel_comercial" type="text" placeholder="Responsável Comercial: Zurich">
       </div>
 
       <button type="submit" class="submit-button">Enviar Cadastro</button>
@@ -317,14 +319,14 @@
               const nomes = socio.nome.split(" ");
               document.getElementById('first_name').value = nomes.slice(0, -1).join(" ");
               document.getElementById('last_name').value = nomes.slice(-1).join(" ");
-              document.getElementById('responsavelComercialGroup').style.display = 'block';
+              document.getElementById('responsavelComercialSection').style.display = 'block';
               document.getElementById('responsavel_comercial').value = "Zurich";
             } else {
-              document.getElementById('responsavelComercialGroup').style.display = 'none';
+              document.getElementById('responsavelComercialSection').style.display = 'none';
               document.getElementById('responsavel_comercial').value = "";
             }
           } else {
-            document.getElementById('responsavelComercialGroup').style.display = 'none';
+            document.getElementById('responsavelComercialSection').style.display = 'none';
             document.getElementById('responsavel_comercial').value = "";
           }
 
